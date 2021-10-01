@@ -8,6 +8,9 @@ import imutils
 import time
 import cv2
 import os
+import tkinter
+from tkinter import messagebox
+from beeply import notes
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	# grab the dimensions of the frame and then construct a blob
@@ -114,6 +117,18 @@ while True:
 		cv2.putText(frame, label, (startX, startY - 10),
 			cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 2)
 		cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
+		if (withoutMask>mask):
+			
+
+			mybeep=notes.beeps()
+			mybeep.hear('B',5000)
+			messagebox.showwarning("Warning","Access Denied. Please wear a Face Mask")
+		else:
+			pass
+			break
+
+
+
 
 	# show the output frame
 	cv2.imshow("Frame", frame)
